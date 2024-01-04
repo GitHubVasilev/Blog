@@ -14,6 +14,7 @@
 
 # Поля
 
+
 * [x] `Name` должно быть не менее 5 и не более 50 символов.
 * [x] `Description` должно быть не более 1024 символов, но может быть пустым.
 * [x] `Parent` родительская категория
@@ -21,17 +22,17 @@
 
 # Требования
 
-* [] При выключении видимости все дочерние категории и посты в них должны быть скрыты от просмотра
-* [] При получении всех категорий `GetAll()` администратор должен получать и скрытые категории тоже
-* [] Просмотр всех каталогов должно использоваться разбиение на страницы (paging)
+* [ ] При выключении видимости все дочерние категории и посты в них должны быть скрыты от просмотра
+* [ ] При получении всех категорий `GetAll()` администратор должен получать и скрытые категории тоже
+* [ ] Просмотр всех каталогов должно использоваться разбиение на страницы (paging)
 
 # API должна содержать методы CRUD для управления сущностью `Category`:
-* [] `GetPaged(int pageIndex, int pageSize)`
-* [] `GetAll()`
-* [] `Create(CategoryViewModel model)`
-* [] `GetById(Guid id)`
-* [] `Update(CategoryUpdateViewModel)`
-* [] `Delete(Guid id)`
+* [ ] `GetPaged(int pageIndex, int pageSize)`
+* [ ] `GetAll()`
+* [ ] `Create(CategoryViewModel model)`
+* [ ] `GetById(Guid id)`
+* [ ] `Update(CategoryUpdateViewModel)`
+* [ ] `Delete(Guid id)`
 
 ## Сущность "Entry"
 
@@ -106,8 +107,8 @@
 ``` mermaid
 classDiagram
 	direction RL
-	Product "*" <-- "1" Category
-	Review "*" <-- "1" Product
+	Post "*" <-- "1" Category
+	Review "*" <-- "1" Post
 	Auditable <|-- Identity
 	Category <|-- Identity
 	Entry <|-- Auditable
