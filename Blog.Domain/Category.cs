@@ -1,14 +1,12 @@
-﻿namespace Blog.Domain
+﻿using Blog.Domain.Base;
+
+namespace Blog.Domain
 {
     /// <summary>
     /// Модель типа данных Категория
     /// </summary>
-    public class Category
+    public class Category : Identity
     {
-        /// <summary>
-        /// Идентификатор
-        /// </summary>
-        public Guid Uid { get; set; }
         /// <summary>
         /// Наименование
         /// </summary>
@@ -21,5 +19,13 @@
         /// Флаг видимости
         /// </summary>
         public bool Visible { get; set; } = false;
+        /// <summary>
+        /// Идентификатор родительской категории
+        /// </summary>
+        public Guid ParentId { get; set; }
+        /// <summary>
+        /// Список статей в категории
+        /// </summary>
+        public List<Entry>? Entries { get; set; }
     }
 }

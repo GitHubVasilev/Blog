@@ -10,14 +10,15 @@
 
 ## Сущность "Category" (Категория)
 
-Сущность `Category` содержит общею информация о постах (`Post`) хранящихся в ней.
+Сущность `Category` содержит общею информация о постах (`Entry`) хранящихся в ней.
 
 # Поля
 
-* [ ] `Name` должно быть не менее 5 и не более 50 символов.
-* [ ] `Description` должно быть не более 1024 символов, но может быть пустым.
-* [ ] `Parent` родительская категория
-* [ ] `Visible` можно включить/выключить (скрыть/показать для всеобщего просмотра).
+
+* [x] `Name` должно быть не менее 5 и не более 50 символов.
+* [x] `Description` должно быть не более 1024 символов, но может быть пустым.
+* [x] `Parent` родительская категория
+* [x] `Visible` можно включить/выключить (скрыть/показать для всеобщего просмотра).
 
 # Требования
 
@@ -33,13 +34,13 @@
 * [ ] `Update(CategoryUpdateViewModel)`
 * [ ] `Delete(Guid id)`
 
-## Сущность "Post"
+## Сущность "Entry"
 
 # Поля
 
-* [ ] `Title` должно быть не менее 5 и не более 50 символов.
-* [ ] `Content` не может быть пустым.
-* [ ] `Visible` можно включить/выключить (скрыть/показать для всеобщего просмотра).
+* [x] `Title` должно быть не менее 5 и не более 50 символов.
+* [x] `Content` не может быть пустым.
+* [x] `Visible` можно включить/выключить (скрыть/показать для всеобщего просмотра).
 
 # Требования
 
@@ -48,22 +49,21 @@
 * [ ] При выключении видимсоти комменатрии к посту тоже должны быть скрыты
 * [ ] Просмотр всех обзоров должны использоваться разбиение на страницы (paging)
 
-# API должна содержать методы CRUD для управления сущностью `Post`:
+# API должна содержать методы CRUD для управления сущностью `Entry`:
 * [ ] `GetPaged(int pageIndex, int pageSize)`
 * [ ] `GetAll()` (глупый метод)
-* [ ] `Create(PostCreateViewModel model)` Get
-* [ ] `Create(PostCreateViewModel model)` Post
+* [ ] `Create(EntryCreateViewModel model)` Get
+* [ ] `Create(EntryCreateViewModel model)` Post
 * [ ] `GetById(Guid id)`
-* [ ] `Update(PostUpdateViewModel)`Get
-* [ ] `Update(PostUpdateViewModel)`Put
+* [ ] `Update(EntryUpdateViewModel)`Get
+* [ ] `Update(EntryUpdateViewModel)`Put
 * [ ] `Delete(Guid id)`
 
 ## Сущность "Review"
-* [ ] `UserName` должно быть не менее 5 и не более 128 символов
-* [ ] `Content` должно быть не более 2048 символов, не может быть пустым
-* [ ] `Rating` должно быть от 1 до 5 единиц (очков, баллов, и т.д.)
-* [ ] `Parent` родительская категория
-* [ ] `ProductId` обязательно при создании нового обзора (комментария)
+* [x] `UserName` должно быть не менее 5 и не более 128 символов
+* [x] `Content` должно быть не более 2048 символов, не может быть пустым
+* [x] `Parent` родительский комментарий
+* [x] `EntryId` обязательно при создании нового обзора (комментария)
 
 # Требования
 
@@ -111,7 +111,7 @@ classDiagram
 	Review "*" <-- "1" Post
 	Auditable <|-- Identity
 	Category <|-- Identity
-	Post <|-- Auditable
+	Entry <|-- Auditable
 	Review <|-- Auditable
 
 ```
@@ -125,17 +125,17 @@ class Category {
 	+string Name
 	+string Description
     +Category Parent
-	+List~Post~
+	+List~Entry~
 	bool Visible
 }
 ```
 
 ``` mermaid
 ---
-title: Сущность Post
+title: Сущность Entry
 ---
 classDiagram
-class Post {
+class Entry {
 	+string Name
 	+string Content
 	Guid CategoryId
@@ -153,7 +153,7 @@ class Review {
 	string Content
 	string User
 	int Rating
-	Guid Post
+	Guid Entry
 	Review Parent
 	bool Visible
 }
