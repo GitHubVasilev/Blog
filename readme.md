@@ -108,7 +108,7 @@
 classDiagram
 	direction RL
 	Post "*" <-- "1" Category
-	Review "*" <-- "1" Product
+	Review "*" <-- "1" Post
 	Auditable <|-- Identity
 	Category <|-- Identity
 	Post <|-- Auditable
