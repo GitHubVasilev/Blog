@@ -1,4 +1,4 @@
-﻿namespace Blog.Domain.Base
+﻿namespace Blog.Application.Interfaces
 {
     /// <summary>
     /// Интерфейс для моделей представления

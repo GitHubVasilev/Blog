@@ -5,7 +5,7 @@ namespace Blog.Domain
     /// <summary>
     /// Модель типа данных Категория
     /// </summary>
-    public class Category : Identity
+    public class Category : Identity, IModelTree
     {
         /// <summary>
         /// Наименование
@@ -18,11 +18,11 @@ namespace Blog.Domain
         /// <summary>
         /// Флаг видимости
         /// </summary>
-        public bool Visible { get; set; } = false;
+        public bool IsVisible { get; set; } = false;
         /// <summary>
         /// Идентификатор родительской категории
         /// </summary>
-        public Guid ParentId { get; set; }
+        public Guid? ParentId { get; set; }
         /// <summary>
         /// Список статей в категории
         /// </summary>

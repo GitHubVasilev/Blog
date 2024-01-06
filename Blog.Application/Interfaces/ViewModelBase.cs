@@ -1,9 +1,11 @@
-﻿namespace Blog.Domain.Base
+﻿using Blog.Domain.Base;
+
+namespace Blog.Application.Interfaces
 {
     /// <summary>
     /// Базовый класс модели представления
     /// </summary>
-    internal class ViewModelBase : IViewModel, IHaveId
+    public class ViewModelBase : IViewModel, IHaveId
     {
         /// <summary>
         /// Идентификатор
@@ -11,3 +13,4 @@
         public Guid Id { get; set; }
     }
 }
+
