@@ -22,6 +22,6 @@ namespace Blog.Domain
         /// <summary>
         /// Флаг видимости
         /// </summary>
-        public bool Visible { get; set; }
+        public bool IsVisible { get; set; }
     }
 }

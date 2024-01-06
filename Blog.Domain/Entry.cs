@@ -18,7 +18,7 @@ namespace Blog.Domain
         /// <summary>
         /// Флаг отображения
         /// </summary>
-        public bool Visible { get; set; }
+        public bool IsVisible { get; set; }
 
         /// <summary>
         /// Список комментариев
