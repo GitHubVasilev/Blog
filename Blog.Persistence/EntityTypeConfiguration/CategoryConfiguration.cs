@@ -17,7 +17,6 @@ namespace Blog.Persistence.EntityTypeConfiguration
             builder.Property(m => m.Name)
                 .IsRequired()
                 .HasMaxLength(100);
-            builder.HasAlternateKey(m => new { m.Name, m.ParentId });
         }
     }
 }
