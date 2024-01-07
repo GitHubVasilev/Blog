@@ -12,7 +12,7 @@ namespace Blog.Application
         {
             _mapper = mapper;
         }
-        public List<K> Build(List<T> listModels, T? startParent = null) 
+        public List<K> Build(IEnumerable<T> listModels, T? startParent = null) 
         {
             var listReturn = new List<K>();
             foreach (var model in listModels.Where(m => m.ParentId == startParent?.Id))
