@@ -5,16 +5,16 @@ using Blog.Domain;
 namespace Blog.Application.Categories.Mappers
 {
     /// <summary>
-    /// Класс для преобразования данных моделей <see cref="Category"/> и моделей представления <see cref="CategoryViewModel">
+    /// Класс для преобразования данных моделей <see cref="Category"/> и моделей представления <see cref="CategoryGetViewModel">
     /// </summary>
-    public class CategoryGetMapper : ICustomMapper<Category, CategoryViewModel>
+    public class CategoryGetMapper : ICustomMapper<Category, CategoryGetViewModel>
     {
         /// <summary>
-        /// Конвертирует модель представления <see cref="CategoryViewModel"> в модель <see cref="Category"/> 
+        /// Конвертирует модель представления <see cref="CategoryGetViewModel"> в модель <see cref="Category"/> 
         /// </summary>
-        /// <param name="viewModel">Модель представления <see cref="CategoryViewModel"></param>
+        /// <param name="viewModel">Модель представления <see cref="CategoryGetViewModel"></param>
         /// <returns>модель <see cref="Category"/></returns>
-        public Category ToModel(CategoryViewModel viewModel) 
+        public Category ToModel(CategoryGetViewModel viewModel) 
         {
             return new Category
             {
@@ -26,19 +26,19 @@ namespace Blog.Application.Categories.Mappers
             };
         }
         /// <summary>
-        /// Конвертирует модель <see cref="Category"/> в модель представления <see cref="CategoryViewModel">
+        /// Конвертирует модель <see cref="Category"/> в модель представления <see cref="CategoryGetViewModel">
         /// </summary>
         /// <param name="category">модель <see cref="Category"/></param>
-        /// <returns>Модель представления <see cref="CategoryViewModel"></returns>
-        public CategoryViewModel ToViewModel(Category model) 
+        /// <returns>Модель представления <see cref="CategoryGetViewModel"></returns>
+        public CategoryGetViewModel ToViewModel(Category model) 
         {
-            return new CategoryViewModel
+            return new CategoryGetViewModel
             {
                 Id = model.Id,
                 Name = model.Name,
                 Description = model.Description,
                 IsVisible = model.IsVisible,
-                Child = new List<CategoryViewModel>()
+                Child = new List<CategoryGetViewModel>()
             };
         }
     }
