@@ -5,10 +5,11 @@ using Blog.Domain;
 using Blog.Domain.Base;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 
 namespace Blog.Application.Categories.Queries
 {
-    public record CategoryCreateRequest(CategoryCreateViewModel viewModel)
+    public record CategoryCreateRequest(CategoryCreateViewModel viewModel, ClaimsPrincipal User)
         : IRequest<WrapperResult<CategoryGetViewModel>>;
     public class CategoryCreateRequestHandler
         : IRequestHandler<CategoryCreateRequest, WrapperResult<CategoryGetViewModel>>
@@ -28,6 +29,13 @@ namespace Blog.Application.Categories.Queries
         public async Task<WrapperResult<CategoryGetViewModel>> Handle(CategoryCreateRequest request, CancellationToken cancellationToken)
         {
             var result = WrapperResult.Build<CategoryGetViewModel>();
+
+            if (request.User.IsInRole(AppData.SystemAdministratorRoleName)) 
+            {
+                result.ExceptionObject = new BlogAccessDeniedException(nameof(CategoryCreateRequest));
+                return result;
+            }
+
             var entity = _mapper.ToModel(request.viewModel);
 
             var parentCategory = await _dbContext.Categories.FirstOrDefaultAsync(m => m.Id == entity.ParentId, cancellationToken);

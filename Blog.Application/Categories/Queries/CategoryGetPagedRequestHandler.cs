@@ -8,7 +8,7 @@ using System.Security.Claims;
 
 namespace Blog.Application.Categories.Queries
 {
-    public record CategoryGetPagedRequest(int pageIndex, int pageSize, ClaimsPrincipal User)
+    public record CategoryGetPagedRequest(int PageIndex, int PageSize, ClaimsPrincipal User)
     : IRequest<WrapperResult<List<CategoryGetViewModel>>>;
     public class CategoryGetPagedRequestHandler
         : IRequestHandler<CategoryGetPagedRequest, WrapperResult<List<CategoryGetViewModel>>>
@@ -25,8 +25,8 @@ namespace Blog.Application.Categories.Queries
         public async Task<WrapperResult<List<CategoryGetViewModel>>> Handle(CategoryGetPagedRequest request, CancellationToken cancellationToken)
         {
             var listCategories = _dbContext.Categories
-                .OrderBy(c => c.Id).Skip((request.pageIndex - 1) * request.pageSize)
-                .Take(request.pageSize);
+                .OrderBy(c => c.Id).Skip((request.PageIndex - 1) * request.PageSize)
+                .Take(request.PageSize);
             var result = new WrapperResult<List<CategoryGetViewModel>>();
             result.Result = new List<CategoryGetViewModel>();
             await listCategories.ForEachAsync(m => result.Result.Add(_mapper.ToViewModel(m)), cancellationToken: cancellationToken);

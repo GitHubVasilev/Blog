@@ -9,7 +9,7 @@ using System.Security.Claims;
 
 namespace Blog.Application.Categories.Queries
 {
-    public record CategoryGetByIdRequest(Guid categoryId, ClaimsPrincipal User)
+    public record CategoryGetByIdRequest(Guid CategoryId, ClaimsPrincipal User)
     : IRequest<WrapperResult<CategoryDetailViewModel>>;
     public class CategoryGetByIdRequestHandler
         : IRequestHandler<CategoryGetByIdRequest, WrapperResult<CategoryDetailViewModel>>
@@ -24,11 +24,11 @@ namespace Blog.Application.Categories.Queries
         public async Task<WrapperResult<CategoryDetailViewModel>> Handle(CategoryGetByIdRequest request, CancellationToken cancellationToken)
         {
             var wrapperResult = WrapperResult.Build<CategoryDetailViewModel>();
-            var entity = await _dbContext.Categories.FirstOrDefaultAsync(m => m.Id == request.categoryId, cancellationToken);
+            var entity = await _dbContext.Categories.FirstOrDefaultAsync(m => m.Id == request.CategoryId, cancellationToken);
 
             if (entity is null) 
             {
-                wrapperResult.ExceptionObject = new BlogEntityNotFoundException(nameof(Category), request.categoryId);
+                wrapperResult.ExceptionObject = new BlogEntityNotFoundException(nameof(Category), request.CategoryId);
                 return wrapperResult;
             }
             var childrenCategories = _dbContext.Categories.Where(m => m.ParentId == entity.ParentId);

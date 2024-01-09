@@ -5,5 +5,9 @@
     /// </summary>
     public static partial class AppData
     {
+        /// <summary>
+        /// Системный администратор
+        /// </summary>
+        public const string SystemAdministratorRoleName = "Administrator";
     }
 }
