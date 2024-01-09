@@ -15,6 +15,7 @@
         T ToModel(K viewModel);
         /// <summary>
         /// Конвертирует модель <see cref="T"> в модель представления <see cref="K">
+        /// NULL возвращается в случае если на вход получен 
         /// </summary>
         /// <param name="model"></param>
         /// <returns>модель представления <see cref="K"></returns>

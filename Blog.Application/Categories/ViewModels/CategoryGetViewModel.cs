@@ -5,7 +5,7 @@ namespace Blog.Application.Categories.ViewModels
     /// <summary>
     /// Общая модель представления для сущности Категория
     /// </summary>
-    public class CategoryViewModel : ViewModelBase, ITree<CategoryViewModel>
+    public class CategoryGetViewModel : ViewModelBase, ITree<CategoryGetViewModel>
     {
         /// <summary>
         /// Наименование
@@ -22,10 +22,10 @@ namespace Blog.Application.Categories.ViewModels
         /// <summary>
         /// Список дочерних категорий
         /// </summary>
-        public List<CategoryViewModel> Child { get; set; } = null!;
+        public List<CategoryGetViewModel> Child { get; set; } = null!;
         /// <summary>
         /// Родительская категория
         /// </summary>
-        public CategoryViewModel? Parent { get; set; }
+        public CategoryGetViewModel? Parent { get; set; }
     }
 }
