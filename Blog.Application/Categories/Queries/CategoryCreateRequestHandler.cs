@@ -9,7 +9,7 @@ using System.Security.Claims;
 
 namespace Blog.Application.Categories.Queries
 {
-    public record CategoryCreateRequest(CategoryCreateViewModel viewModel, ClaimsPrincipal User)
+    public record CategoryCreateRequest(CategoryCreateViewModel ViewModel, ClaimsPrincipal User)
         : IRequest<WrapperResult<CategoryGetViewModel>>;
     public class CategoryCreateRequestHandler
         : IRequestHandler<CategoryCreateRequest, WrapperResult<CategoryGetViewModel>>
@@ -36,7 +36,7 @@ namespace Blog.Application.Categories.Queries
                 return result;
             }
 
-            var entity = _mapper.ToModel(request.viewModel);
+            var entity = _mapper.ToModel(request.ViewModel);
 
             var parentCategory = await _dbContext.Categories.FirstOrDefaultAsync(m => m.Id == entity.ParentId, cancellationToken);
 
@@ -51,7 +51,7 @@ namespace Blog.Application.Categories.Queries
 
             if (saveResult == 0) 
             {
-                result.ExceptionObject = new BlogEntityAlreadyExistsException(nameof(Category), request.viewModel);
+                result.ExceptionObject = new BlogEntityAlreadyExistsException(nameof(Category), request.ViewModel);
                 return result;
             }
 

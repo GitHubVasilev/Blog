@@ -21,9 +21,7 @@
 
   <ItemGroup>
     <Folder Include="Categories\Validators\" />
-    <Folder Include="Entries\Queries\" />
     <Folder Include="Entries\Validators\" />
-    <Folder Include="Entries\ViewModels\" />
     <Folder Include="Reviews\Queries\" />
     <Folder Include="Reviews\Validators\" />
     <Folder Include="Reviews\ViewModels\" />
