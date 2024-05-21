@@ -26,6 +26,6 @@ namespace Blog.Domain
         /// <summary>
         /// Список статей в категории
         /// </summary>
-        public List<Entry>? Entries { get; set; }
+        public List<Entity>? Entries { get; set; }
     }
 }

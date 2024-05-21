@@ -7,9 +7,9 @@ namespace Blog.Persistence.EntityTypeConfiguration
     /// <summary>
     /// Класс для конфигурации сущности `Entry`
     /// </summary>
-    public class EntryConfiguration : IEntityTypeConfiguration<Entry>
+    public class EntryConfiguration : IEntityTypeConfiguration<Entity>
     {
-        public void Configure(EntityTypeBuilder<Entry> builder)
+        public void Configure(EntityTypeBuilder<Entity> builder)
         {
             builder.HasKey(m => m.Id);
             builder.HasIndex(m => m.Id)

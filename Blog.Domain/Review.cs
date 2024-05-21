@@ -14,7 +14,7 @@ namespace Blog.Domain
         /// <summary>
         /// Статья к которой комментарий принадлежит
         /// </summary>
-        public Guid EntryId { get; set; } 
+        public Guid EntityId { get; set; } 
         /// <summary>
         /// Идентификатор родительского комментария
         /// </summary>
