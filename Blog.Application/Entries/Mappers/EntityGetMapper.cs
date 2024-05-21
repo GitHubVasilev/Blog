@@ -5,18 +5,18 @@ using Blog.Domain;
 namespace Blog.Application.Entries.Mappers
 {
     /// <summary>
-    /// Класс для преобразования данных моделей <see cref="Entry"/> и моделей представления <see cref="EntryViewModel">
+    /// Класс для преобразования данных моделей <see cref="Entity"/> и моделей представления <see cref="EntityGetViewModel">
     /// </summary>
-    public class EntityGetMapper : ICustomMapper<Entry, EntryViewModel>
+    public class EntityGetMapper : ICustomMapper<Entity, EntityGetViewModel>
     {
         /// <summary>
-        /// Конвертирует модель представления <see cref="EntryViewModel"> в модель <see cref="Entry"/> 
+        /// Конвертирует модель представления <see cref="EntityGetViewModel"> в модель <see cref="Entity"/> 
         /// </summary>
-        /// <param name="viewModel">Модель представления <see cref="EntryViewModel"></param>
-        /// <returns>модель <see cref="Entry"/></returns>
-        public Entry ToModel(EntryViewModel viewModel)
+        /// <param name="viewModel">Модель представления <see cref="EntityGetViewModel"></param>
+        /// <returns>модель <see cref="Entity"/></returns>
+        public Entity ToModel(EntityGetViewModel viewModel)
         {
-            return new Entry
+            return new Entity
             {
                 Id = viewModel.Id,
                 Title = viewModel.Title,
@@ -25,13 +25,13 @@ namespace Blog.Application.Entries.Mappers
         }
 
         /// <summary>
-        /// Конвертирует модель <see cref="Entry"/> в модель представления <see cref="EntryViewModel">
+        /// Конвертирует модель <see cref="Entity"/> в модель представления <see cref="EntityGetViewModel">
         /// </summary>
-        /// <param name="model">модель <see cref="Entry"/></param>
-        /// <returns>Модель представления <see cref="EntryViewModel"></returns>
-        public EntryViewModel ToViewModel(Entry model)
+        /// <param name="model">модель <see cref="Entity"/></param>
+        /// <returns>Модель представления <see cref="EntityGetViewModel"></returns>
+        public EntityGetViewModel ToViewModel(Entity model)
         {
-            return new EntryViewModel
+            return new EntityGetViewModel
             {
                 Id = model.Id,
                 Title = model.Title,

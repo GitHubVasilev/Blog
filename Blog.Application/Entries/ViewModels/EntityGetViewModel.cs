@@ -3,9 +3,9 @@
 namespace Blog.Application.Entries.ViewModels
 {
     /// <summary>
-    /// Модель представления для создания сущности Пост
+    /// Модель представления для сущности Пост
     /// </summary>
-    public class EntryCreateViewModel : ViewModelBase
+    public class EntityGetViewModel : ViewModelBase
     {
         /// <summary>
         /// Заголовок

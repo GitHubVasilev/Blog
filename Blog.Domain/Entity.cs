@@ -5,7 +5,7 @@ namespace Blog.Domain
     /// <summary>
     /// Модель сущности пост
     /// </summary>
-    public class Entry : Auditable
+    public class Entity : Auditable
     {
         /// <summary>
         /// Заголовок

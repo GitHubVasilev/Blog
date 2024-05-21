@@ -8,21 +8,21 @@ using System.Security.Claims;
 
 namespace Blog.Application.Entries.Queries
 {
-    public record EntityCreateRequest(EntryCreateViewModel ViewModel, ClaimsPrincipal User)
-        : IRequest<WrapperResult<EntryCreateViewModel>>;
+    public record EntityCreateRequest(EntityCreateViewModel ViewModel, ClaimsPrincipal User)
+        : IRequest<WrapperResult<EntityCreateViewModel>>;
     public class EntityCreateRequestHandler
-        : IRequestHandler<EntityCreateRequest, WrapperResult<EntryCreateViewModel>>
+        : IRequestHandler<EntityCreateRequest, WrapperResult<EntityCreateViewModel>>
     {
         private readonly IBlogDbContext _dbContext;
-        private readonly ICustomMapper<Entry, EntryCreateViewModel> _mapper;
-        public EntityCreateRequestHandler(IBlogDbContext dbContext, ICustomMapper<Entry, EntryCreateViewModel> mapper)
+        private readonly ICustomMapper<Entity, EntityCreateViewModel> _mapper;
+        public EntityCreateRequestHandler(IBlogDbContext dbContext, ICustomMapper<Entity, EntityCreateViewModel> mapper)
         {
             _dbContext = dbContext;
             _mapper = mapper;   
         }
-        public async Task<WrapperResult<EntryCreateViewModel>> Handle(EntityCreateRequest request, CancellationToken cancellationToken)
+        public async Task<WrapperResult<EntityCreateViewModel>> Handle(EntityCreateRequest request, CancellationToken cancellationToken)
         {
-            var result = WrapperResult.Build<EntryCreateViewModel>();
+            var result = WrapperResult.Build<EntityCreateViewModel>();
 
             var entry = _mapper.ToModel(request.ViewModel);
             entry.CreatedBy = request.User.Identity!.Name!;

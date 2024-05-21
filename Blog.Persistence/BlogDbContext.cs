@@ -20,7 +20,7 @@ namespace Blog.Persistence
         /// <summary>
         /// Коллекция статей
         /// </summary>
-        public DbSet<Entry> Entries { get; set; }
+        public DbSet<Entity> Entries { get; set; }
         /// <summary>
         /// Коллекция отзывов
         /// </summary>

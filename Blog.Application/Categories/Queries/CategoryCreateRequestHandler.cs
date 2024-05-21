@@ -36,6 +36,7 @@ namespace Blog.Application.Categories.Queries
                 return result;
             }
 
+            request.ViewModel.Id = Guid.NewGuid();
             var entity = _mapper.ToModel(request.ViewModel);
 
             var parentCategory = await _dbContext.Categories.FirstOrDefaultAsync(m => m.Id == entity.ParentId, cancellationToken);
