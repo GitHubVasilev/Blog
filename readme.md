@@ -28,13 +28,13 @@
 * [ ] Метод `GetPaged(int pageIndex, int pageSize)` возвращает не древовидную струтуру 
 
 # API должна содержать методы CRUD для управления сущностью `Category`:
-* [ ] `GetPaged(int pageIndex, int pageSize)`
-* [ ] `GetAllTree()`
-* [ ] `GetAll()`
-* [ ] `Create(CategoryViewModel model)`
-* [ ] `GetById(Guid id)`
-* [ ] `Update(CategoryUpdateViewModel)`
-* [ ] `Delete(Guid id)`
+* [x] `GetPaged(int pageIndex, int pageSize)`
+* [x] `GetAllTree()`
+* [x] `GetAll()`
+* [x] `Create(CategoryViewModel model)`
+* [x] `GetById(Guid id)`
+* [x] `Update(CategoryUpdateViewModel)`
+* [x] `Delete(Guid id)`
 
 ## Сущность "Entry"
 
@@ -52,14 +52,15 @@
 * [ ] Просмотр всех обзоров должны использоваться разбиение на страницы (paging)
 
 # API должна содержать методы CRUD для управления сущностью `Entry`:
-* [ ] `GetPaged(int pageIndex, int pageSize)`
-* [ ] `GetAll()` (глупый метод)
+* [x] `GetPaged(int pageIndex, int pageSize)`
+* [x] `GetAll()` (глупый метод)
+* [ ] `Get(CategoryId)`
 * [ ] `Create(EntryCreateViewModel model)` Get
-* [ ] `Create(EntryCreateViewModel model)` Post
-* [ ] `GetById(Guid id)`
+* [x] `Create(EntryCreateViewModel model)` Post
+* [x] `GetById(Guid id)`
 * [ ] `Update(EntryUpdateViewModel)`Get
-* [ ] `Update(EntryUpdateViewModel)`Put
-* [ ] `Delete(Guid id)`
+* [x] `Update(EntryUpdateViewModel)`Put
+* [x] `Delete(Guid id)`
 
 ## Сущность "Review"
 * [x] `UserName` должно быть не менее 5 и не более 128 символов

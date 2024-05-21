@@ -7,6 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="11.9.1" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.9.1" />
     <PackageReference Include="MediatR" Version="12.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.0">
@@ -20,8 +22,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Categories\Validators\" />
-    <Folder Include="Entries\Validators\" />
     <Folder Include="Reviews\Queries\" />
     <Folder Include="Reviews\Validators\" />
     <Folder Include="Reviews\ViewModels\" />

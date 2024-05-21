@@ -1,9 +1,12 @@
 ﻿using Blog.Application.Categories.Mappers;
 using Blog.Application.Categories.ViewModels;
+using Blog.Application.Common.Behaviors;
 using Blog.Application.Entries.Mappers;
 using Blog.Application.Entries.ViewModels;
 using Blog.Application.Interfaces;
 using Blog.Domain;
+using FluentValidation;
+using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
@@ -22,7 +25,11 @@ public static class DependencyInjection
         services.AddSingleton<ICustomMapper<Category, CategoryUpdateViewModel>, CategoryUpdateMapper>();
         services.AddScoped<TreeBuilder<Category, CategoryGetViewModel>>();
         #endregion
+
         services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
+        services.AddValidatorsFromAssemblies(new[] { Assembly.GetExecutingAssembly() });
+        services.AddTransient(typeof(IPipelineBehavior<,>),
+            typeof(ValidationBehavior<,>));
         return services;
     }
 }
