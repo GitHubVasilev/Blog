@@ -39,6 +39,7 @@ public class CategoryController : BaseController
     }
 
     [HttpPost]
+    [Authorize]
     public async Task<WrapperResult> Create([FromBody] CategoryCreateViewModel categoryCreateViewModel) 
     {
         var query = new CategoryCreateRequest(categoryCreateViewModel, User);
@@ -46,6 +47,7 @@ public class CategoryController : BaseController
     }
 
     [HttpDelete("{id:guid}")]
+    [Authorize]
     public async Task<WrapperResult> Delete(Guid id) 
     {
         var query = new CategoryDeleteByIdRequest(id, User);
@@ -53,6 +55,7 @@ public class CategoryController : BaseController
     }
 
     [HttpPut]
+    [Authorize]
     public async Task<WrapperResult> Update([FromBody] CategoryUpdateViewModel categoryUpdateViewModel) 
     {
         var query = new CategoryUpdateRequest(categoryUpdateViewModel, User);
