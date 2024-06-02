@@ -1,6 +1,7 @@
 ﻿using Blog.Application.Entries.Queries;
 using Blog.Application.Entries.ViewModels;
 using Blog.Domain.Base;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Blog.WebApi.Controllers;
@@ -22,6 +23,7 @@ public class EntityController : BaseController
     }
 
     [HttpPost]
+    [Authorize]
     public Task<WrapperResult<EntityCreateViewModel>> Create([FromBody] EntityCreateViewModel entityCreateViewModel) 
     {
         var query = new EntityCreateRequest(entityCreateViewModel, User);

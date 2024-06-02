@@ -1,5 +1,7 @@
 using Blog.Persistence;
 using Blog.Application;
+using Blog.WebApi.Identity;
+using Blog.WebApi.Swagger;
 
 namespace Blog.WebApi;
 
@@ -10,48 +12,50 @@ public class Program
         var builder = WebApplication.CreateBuilder(args);
         builder.Services.AppPersistence(builder.Configuration);
         builder.Services.AddApplication();
-
         builder.Services.AddControllers();
+        builder.Services.AddHttpContextAccessor();
 
-        // TODO: Проверить. Скорее всего это не нужно
+        builder.Services
+            .AddOpenIddict()
+            .AddValidation(options =>
+            {
+                // Import the configuration from the local OpenIddict server instance.
+                options.SetIssuer("https://localhost:7100/");
+                // Register the ASP.NET Core host.
+                options.UseAspNetCore();
+                options.UseSystemNetHttp();
+            });
+        AuthorizationConfiguration.ConfigureServices(builder);
+        SwaggerConfiguration.ConfigureServices(builder.Services, builder);
+        
         builder.Services.AddCors(option => 
         {
-            option.AddPolicy("AllowAll", policy =>
+            option.AddPolicy("CorsPolicy", policy =>
             {
                 policy.AllowAnyHeader();
                 policy.AllowAnyMethod();
-                policy.AllowAnyOrigin();
+                policy.SetIsOriginAllowed(host => true);
+                policy.AllowCredentials();
             });
         });
 
         var app = builder.Build();
 
-        try
+        using (var scope = app.Services.CreateScope())
         {
-            using (var scope = app.Services.CreateScope())
-            {
-                await DbInitializer.InitializeAsync(scope.ServiceProvider);
-            }
+            await DbInitializer.InitializeAsync(scope.ServiceProvider);
         }
-        catch (Exception ex) 
-        {
-        }
-        
-        app.UseRouting();
+
         app.UseHttpsRedirection();
+        app.UseRouting();
+        app.UseCors("CorsPolicy");
+        app.UseAuthentication();
+        app.UseAuthorization();
+        
+        SwaggerConfiguration.ConfigureApplication(app);
+        app.MapDefaultControllerRoute();
 
-        // TODO: Проверить. Скорее всего это не нужно
-        app.UseCors(cors => cors
-            .AllowAnyMethod()
-            .AllowAnyHeader()
-            .SetIsOriginAllowed(origin => true)
-            .AllowCredentials());
-
-        app.UseEndpoints(endpoints =>
-        {
-            endpoints.MapControllers();
-        });
-
+        UserIdentity.Instance.Configure(app.Services.GetService<IHttpContextAccessor>()!);
         app.Run();
     }
 }
