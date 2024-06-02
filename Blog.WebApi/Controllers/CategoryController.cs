@@ -1,6 +1,7 @@
 ﻿using Blog.Application.Categories.Queries;
 using Blog.Application.Categories.ViewModels;
 using Blog.Domain.Base;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Blog.WebApi.Controllers;
@@ -16,6 +17,7 @@ public class CategoryController : BaseController
     }
 
     [HttpGet]
+    [Authorize]
     public async Task<WrapperResult<List<CategoryGetViewModel>>> GetAll()
     {
         var query = new CategoryGetAllRequest(User);
