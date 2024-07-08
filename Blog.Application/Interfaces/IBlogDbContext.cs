@@ -15,7 +15,7 @@ namespace Blog.Application.Interfaces
         /// <summary>
         /// Коллекция статей
         /// </summary>
-        DbSet<Entity> Entries { get; set; }
+        DbSet<Entity> Entities { get; set; }
         /// <summary>
         /// Коллекция отзывов
         /// </summary>

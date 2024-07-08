@@ -22,9 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Reviews\Queries\" />
     <Folder Include="Reviews\Validators\" />
-    <Folder Include="Reviews\ViewModels\" />
   </ItemGroup>
 
 </Project>

@@ -35,7 +35,11 @@ namespace Blog.Application.Entries.Mappers
             {
                 Id = model.Id,
                 Title = model.Title,
-                Content = model.Content
+                Content = model.Content,
+                CreatedAt = model.CreatedAt,
+                CreatedBy = model.CreatedBy,
+                UpdatedAt = model.UpdatedAt,
+                UpdatedBy = model.UpdatedBy,
             };
         }
     }

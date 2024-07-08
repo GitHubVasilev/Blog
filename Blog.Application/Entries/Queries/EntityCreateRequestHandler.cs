@@ -28,7 +28,7 @@ namespace Blog.Application.Entries.Queries
             entry.CreatedBy = request.User.Identity!.Name!;
             entry.CreatedAt = DateTime.UtcNow;
 
-            _dbContext.Entries.Add(entry);
+            _dbContext.Entities.Add(entry);
 
             var saveResult = await _dbContext.SaveChangesAsync(cancellationToken);
 

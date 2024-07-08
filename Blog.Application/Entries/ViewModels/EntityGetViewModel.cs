@@ -5,7 +5,7 @@ namespace Blog.Application.Entries.ViewModels
     /// <summary>
     /// Модель представления для сущности Пост
     /// </summary>
-    public class EntityGetViewModel : ViewModelBase
+    public class EntityGetViewModel : ViewModelAuditableBase
     {
         /// <summary>
         /// Заголовок
