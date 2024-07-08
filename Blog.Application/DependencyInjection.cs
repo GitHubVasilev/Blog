@@ -4,6 +4,8 @@ using Blog.Application.Common.Behaviors;
 using Blog.Application.Entries.Mappers;
 using Blog.Application.Entries.ViewModels;
 using Blog.Application.Interfaces;
+using Blog.Application.Reviews.Mappers;
+using Blog.Application.Reviews.ViewModels;
 using Blog.Domain;
 using FluentValidation;
 using MediatR;
@@ -23,7 +25,10 @@ public static class DependencyInjection
         services.AddSingleton<ICustomMapper<Category, CategoryDetailViewModel>, CategoryDetailMapper>();
         services.AddSingleton<ICustomMapper<Category, CategoryCreateViewModel>, CategoryCreateMapper>();
         services.AddSingleton<ICustomMapper<Category, CategoryUpdateViewModel>, CategoryUpdateMapper>();
+        services.AddSingleton<ICustomMapper<Review, ReviewGetViewModel>, ReviewGetMapper>();
+        services.AddSingleton<ICustomMapper<Review, ReviewCreateViewModel>, ReviewCreateMapper>();
         services.AddScoped<TreeBuilder<Category, CategoryGetViewModel>>();
+        services.AddScoped<TreeBuilder<Review, ReviewGetViewModel>>();
         #endregion
 
         services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));

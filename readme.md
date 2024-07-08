@@ -36,7 +36,7 @@
 * [x] `Update(CategoryUpdateViewModel)`
 * [x] `Delete(Guid id)`
 
-## Сущность "Entry"
+## Сущность "Entity"
 
 # Поля
 
@@ -51,22 +51,22 @@
 * [ ] При выключении видимсоти комменатрии к посту тоже должны быть скрыты
 * [ ] Просмотр всех обзоров должны использоваться разбиение на страницы (paging)
 
-# API должна содержать методы CRUD для управления сущностью `Entry`:
+# API должна содержать методы CRUD для управления сущностью `Entity`:
 * [x] `GetPaged(int pageIndex, int pageSize)`
 * [x] `GetAll()` (глупый метод)
 * [ ] `Get(CategoryId)`
-* [ ] `Create(EntryCreateViewModel model)` Get
-* [x] `Create(EntryCreateViewModel model)` Post
+* [ ] `Create(EntityCreateViewModel model)` Get
+* [x] `Create(EntityCreateViewModel model)` Post
 * [x] `GetById(Guid id)`
-* [ ] `Update(EntryUpdateViewModel)`Get
-* [x] `Update(EntryUpdateViewModel)`Put
+* [ ] `Update(EntityUpdateViewModel)`Get
+* [ ] `Update(EntityUpdateViewModel)`Put
 * [x] `Delete(Guid id)`
 
 ## Сущность "Review"
 * [x] `UserName` должно быть не менее 5 и не более 128 символов
 * [x] `Content` должно быть не более 2048 символов, не может быть пустым
 * [x] `Parent` родительский комментарий
-* [x] `EntryId` обязательно при создании нового обзора (комментария)
+* [x] `EntityId` обязательно при создании нового обзора (комментария)
 * [x] `IsVisible` можно включить/выключить (скрыть/показать для всеобщего просмотра).
 
 # Требования
@@ -76,14 +76,14 @@
 
 # API должна содержать методы CRUD для управления сущностью `Review`:
 * [ ] `Create(ReviewCreateViewModel model)` Get
-* [ ] `Create(ReviewCreateViewModel model)` Post
+* [х] `Create(ReviewCreateViewModel model)` Post
 * [ ] `GetById(Guid id)`
 * [ ] `Delete(Guid id)`
 * [ ] `Update(Guid id)` Get
 * [ ] `Update(ReviewUpdateViewModel model)` Post
 * [ ] `GetLastReviews(int count)`
 * [ ] `GetPaged(int pageIndex, int pageSize)`
-* [ ] `GetAll(Guid productId)`
+* [x] `GetAllTree(Guid productId)`
 
 ## Общие требования для сущности Review
 
@@ -129,7 +129,7 @@ class Category {
 	+string Name
 	+string Description
     +Category Parent
-	+List~Entry~
+	+List~Category~
 	bool Visible
 }
 ```
@@ -155,7 +155,6 @@ title: Сущность Review
 classDiagram
 class Review {
 	string Content
-	string User
 	int Rating
 	Guid Entry
 	Review Parent
