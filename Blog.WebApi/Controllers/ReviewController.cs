@@ -8,9 +8,23 @@ namespace Blog.WebApi.Controllers;
 public class ReviewController : BaseController
 {
     [HttpGet]
-    public async Task<WrapperResult<List<ReviewGetViewModel>>> GetAllTree()
+    public async Task<WrapperResult<List<ReviewGetViewModel>>> GetAllTree(Guid productId)
     {
-        var query = new ReviewGetAllTreeRequest(User);
+        var query = new ReviewGetAllTreeRequest(productId, User);
+        return await Mediator.Send(query);
+    }
+
+    [HttpGet]
+    public async Task<WrapperResult<ReviewGetViewModel>> GetById(Guid reviewId) 
+    {
+        var query = new ReviewGetByIdRequest(reviewId, User);
+        return await Mediator.Send(query);
+    }
+
+    [HttpGet]
+    public async Task<WrapperResult<ReviewCreateViewModel>> Create()
+    {
+        var query = new ReviewGetForCreateRequest(User);
         return await Mediator.Send(query);
     }
 
