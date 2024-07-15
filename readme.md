@@ -75,10 +75,10 @@
 * [ ] Просмотр всех обзоров должны использоваться разбиение на страницы (paging)
 
 # API должна содержать методы CRUD для управления сущностью `Review`:
-* [x]`Create(ReviewCreateViewModel model)` Get
+* [x] `Create()` Get
 * [х] `Create(ReviewCreateViewModel model)` Post
-* [ ] `GetById(Guid id)`
-* [ ] `Delete(Guid id)`
+* [x] `GetById(Guid id)`
+* [x] `Delete(Guid id)`
 * [ ] `Update(Guid id)` Get
 * [ ] `Update(ReviewUpdateViewModel model)` Put
 * [ ] `GetLastReviews(int count)`

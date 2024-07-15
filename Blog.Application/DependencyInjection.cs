@@ -27,6 +27,7 @@ public static class DependencyInjection
         services.AddSingleton<ICustomMapper<Category, CategoryUpdateViewModel>, CategoryUpdateMapper>();
         services.AddSingleton<ICustomMapper<Review, ReviewGetViewModel>, ReviewGetMapper>();
         services.AddSingleton<ICustomMapper<Review, ReviewCreateViewModel>, ReviewCreateMapper>();
+        services.AddSingleton<ICustomMapper<Review, ReviewUpdateViewModel>, ReviewUpdateMapper>();
         services.AddScoped<TreeBuilder<Category, CategoryGetViewModel>>();
         services.AddScoped<TreeBuilder<Review, ReviewGetViewModel>>();
         #endregion

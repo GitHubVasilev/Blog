@@ -33,19 +33,16 @@ namespace Blog.Application.Categories.Queries
                 return result;
             }
 
-            var entity = await _dbContext.Categories.FirstOrDefaultAsync(m => m.Id == request.ViewModel.Id);
-
-            if (entity is null) 
+            if (await _dbContext.Categories.AnyAsync(m => m.Id == request.ViewModel.Id, cancellationToken)) 
             {
                 result.ExceptionObject = new BlogEntityNotFoundException(nameof(Category), request.ViewModel.Id);
                 return result;
             }
 
-            entity.Name = request.ViewModel.Name;
-            entity.Description = request.ViewModel.Description;
-            entity.IsVisible = request.ViewModel.IsVisible;
-            entity.ParentId = request.ViewModel.ParentId;
+            var newCategory = _mapper.ToModel(request.ViewModel);
 
+            _dbContext.Categories.Update(newCategory);
+            
             await _dbContext.SaveChangesAsync(cancellationToken);
 
             result.Result = request.ViewModel;

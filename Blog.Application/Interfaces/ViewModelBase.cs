@@ -1,16 +1,15 @@
 ﻿using Blog.Domain.Base;
 
-namespace Blog.Application.Interfaces
+namespace Blog.Application.Interfaces;
+
+/// <summary>
+/// Базовый класс модели представления
+/// </summary>
+public class ViewModelBase : IViewModel, IHaveId
 {
     /// <summary>
-    /// Базовый класс модели представления
+    /// Идентификатор
     /// </summary>
-    public class ViewModelBase : IViewModel, IHaveId
-    {
-        /// <summary>
-        /// Идентификатор
-        /// </summary>
-        public Guid Id { get; set; }
-    }
+    public Guid Id { get; set; }
 }
 
