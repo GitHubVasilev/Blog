@@ -13,7 +13,7 @@ public class ReviewGetMapper : ICustomMapper<Review, ReviewGetViewModel>
     /// Конвертирует модель представления <see cref="ReviewGetViewModel"> в модель <see cref="Review"/> 
     /// </summary>
     /// <param name="viewModel">Модель представления <see cref="ReviewGetViewModel"></param>
-    /// <returns>модель <see cref="Category"/></returns>
+    /// <returns>модель <see cref="Review"/></returns>
     public Review ToModel(ReviewGetViewModel viewModel)
     {
         return new Review()
@@ -22,6 +22,10 @@ public class ReviewGetMapper : ICustomMapper<Review, ReviewGetViewModel>
             Content = viewModel.Content,
             ParentId = viewModel.Parent?.Id ?? null,
             IsVisible = viewModel.IsVisible,
+            CreatedAt = viewModel.CreatedAt,
+            CreatedBy = viewModel.CreatedBy,
+            UpdatedAt = viewModel.UpdatedAt,
+            UpdatedBy = viewModel.UpdatedBy,
         };
     }
 
@@ -37,6 +41,10 @@ public class ReviewGetMapper : ICustomMapper<Review, ReviewGetViewModel>
             Id = model.Id,
             Content = model.Content,
             IsVisible = model.IsVisible,
+            CreatedAt = model.CreatedAt,
+            CreatedBy = model.CreatedBy,
+            UpdatedAt = model.UpdatedAt,
+            UpdatedBy = model.UpdatedBy,
             Child = new List<ReviewGetViewModel>()
         };
     }

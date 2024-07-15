@@ -1,6 +1,7 @@
 ﻿using Blog.Application.Reviews.Queries;
 using Blog.Application.Reviews.ViewModels;
 using Blog.Domain.Base;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Blog.WebApi.Controllers;
@@ -8,6 +9,7 @@ namespace Blog.WebApi.Controllers;
 public class ReviewController : BaseController
 {
     [HttpGet]
+    [Authorize]
     public async Task<WrapperResult<List<ReviewGetViewModel>>> GetAllTree(Guid productId)
     {
         var query = new ReviewGetAllTreeRequest(productId, User);
@@ -15,6 +17,7 @@ public class ReviewController : BaseController
     }
 
     [HttpGet]
+    [Authorize]
     public async Task<WrapperResult<ReviewGetViewModel>> GetById(Guid reviewId) 
     {
         var query = new ReviewGetByIdRequest(reviewId, User);
@@ -22,6 +25,7 @@ public class ReviewController : BaseController
     }
 
     [HttpGet]
+    [Authorize]
     public async Task<WrapperResult<ReviewCreateViewModel>> Create()
     {
         var query = new ReviewGetForCreateRequest(User);
@@ -29,9 +33,32 @@ public class ReviewController : BaseController
     }
 
     [HttpPost]
+    [Authorize]
     public async Task<WrapperResult> Create([FromBody] ReviewCreateViewModel viewModel) 
     {
         var query = new ReviewCreateRequest(viewModel, User);
+        return await Mediator.Send(query);
+    }
+
+    [HttpDelete]
+    [Authorize]
+    public async Task<WrapperResult<int>> Delete(Guid reviewId)
+    {
+        var query = new ReviewDeleteByIdRequest(reviewId, User);
+        return await Mediator.Send(query);
+    }
+
+    [HttpGet]
+    [Authorize]
+    public async Task<WrapperResult<ReviewUpdateViewModel>> Update(Guid reviewId) 
+    {
+        var query = new ReviewGetForUpdateRequest(reviewId, User);
+        return await Mediator.Send(query);
+    }
+
+    public async Task<WrapperResult<int>> Update([FromBody] ReviewUpdateViewModel viewModel) 
+    {
+        var query = new ReviewUpdateRequest(viewModel, User);
         return await Mediator.Send(query);
     }
 }

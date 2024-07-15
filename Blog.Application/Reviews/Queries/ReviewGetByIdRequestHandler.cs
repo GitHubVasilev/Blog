@@ -5,12 +5,7 @@ using Blog.Domain;
 using Blog.Domain.Base;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Blog.Application.Reviews.Queries;
 
@@ -34,7 +29,7 @@ public class ReviewGetByIdRequestHandler : IRequestHandler<ReviewGetByIdRequest,
 
         if (model is null)
         {
-            result.ExceptionObject = new BlogEntityNotFoundException($"Отзыв с ID {request.ReviewId} не найден", request.ReviewId);
+            result.ExceptionObject = new BlogEntityNotFoundException(nameof(Review), request.ReviewId);
             return result;
         }
 

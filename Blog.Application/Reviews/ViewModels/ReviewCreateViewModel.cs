@@ -8,9 +8,9 @@ namespace Blog.Application.Reviews.ViewModels;
 public class ReviewCreateViewModel : ViewModelBase
 {
     /// <summary>
-    /// Имя пользователя
+    /// Флаг отображения
     /// </summary>
-    public string UserName { get; set; } = null!;
+    public bool IsVisible { get; set; }
 
     /// <summary>
     /// Содержание
@@ -30,5 +30,5 @@ public class ReviewCreateViewModel : ViewModelBase
     /// <summary>
     /// Идентификатор родительского комментария
     /// </summary>
-    public Guid ParentId { get; set; }
+    public Guid? ParentId { get; set; }
 }

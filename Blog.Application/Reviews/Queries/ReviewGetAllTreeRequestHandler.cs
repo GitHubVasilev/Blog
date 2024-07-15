@@ -8,7 +8,7 @@ using System.Security.Claims;
 
 namespace Blog.Application.Reviews.Queries;
 
-public record ReviewGetAllTreeRequest(Guid ProductId, ClaimsPrincipal User)
+public record ReviewGetAllTreeRequest(Guid ReviewId, ClaimsPrincipal User)
     : IRequest<WrapperResult<List<ReviewGetViewModel>>>;
 
 public class ReviewGetAllTreeRequestHandler : IRequestHandler<ReviewGetAllTreeRequest, WrapperResult<List<ReviewGetViewModel>>>
@@ -24,7 +24,7 @@ public class ReviewGetAllTreeRequestHandler : IRequestHandler<ReviewGetAllTreeRe
     public async Task<WrapperResult<List<ReviewGetViewModel>>> Handle(ReviewGetAllTreeRequest request, CancellationToken cancellationToken)
     {
         var result = WrapperResult.Build<List<ReviewGetViewModel>>();
-        result.Result = _treeBuilder.Build(await _dbContext.Reviews.Where(m => m.IsVisible && m.ParentId == request.ProductId).ToListAsync(cancellationToken));
+        result.Result = _treeBuilder.Build(await _dbContext.Reviews.Where(m => m.IsVisible && m.ParentId == request.ReviewId).ToListAsync(cancellationToken));
         return result;
     }
 }
