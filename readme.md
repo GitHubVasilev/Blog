@@ -54,7 +54,7 @@
 # API должна содержать методы CRUD для управления сущностью `Entity`:
 * [x] `GetPaged(int pageIndex, int pageSize)`
 * [x] `GetAll()` (глупый метод)
-* [ ] `Get(CategoryId)`
+* [x] `Get(CategoryId)`
 * [ ] `Create(EntityCreateViewModel model)` Get
 * [x] `Create(EntityCreateViewModel model)` Post
 * [x] `GetById(Guid id)`
@@ -66,30 +66,31 @@
 * [x] `UserName` должно быть не менее 5 и не более 128 символов
 * [x] `Content` должно быть не более 2048 символов, не может быть пустым
 * [x] `Parent` родительский комментарий
+* [x] `Rating` оценка от 0 до 5
 * [x] `EntityId` обязательно при создании нового обзора (комментария)
 * [x] `IsVisible` можно включить/выключить (скрыть/показать для всеобщего просмотра).
 
 # Требования
 
 * [ ] Посмотреть все комментарии к посту можно лишь только администратору.
-* [ ] Просмотр всех обзоров должны использоваться разбиение на страницы (paging)
+* [x] Просмотр всех обзоров должны использоваться разбиение на страницы (paging)
 
 # API должна содержать методы CRUD для управления сущностью `Review`:
 * [x] `Create()` Get
 * [х] `Create(ReviewCreateViewModel model)` Post
 * [x] `GetById(Guid id)`
 * [x] `Delete(Guid id)`
-* [ ] `Update(Guid id)` Get
-* [ ] `Update(ReviewUpdateViewModel model)` Put
-* [ ] `GetLastReviews(int count)`
-* [ ] `GetPaged(int pageIndex, int pageSize)`
+* [x] `Update(Guid id)` Get
+* [x] `Update(ReviewUpdateViewModel model)` Put
+* [x] `GetLastReviews(int count)`
+* [x] `GetPaged(int pageIndex, int pageSize)`
 * [x] `GetAllTree(Guid productId)`
 
 ## Общие требования для сущности Review
 
-* [ ] Товар может иметь несколько отзывов или не иметь вообще.
-* [ ] Отзыв может оставить только зарегистрированный пользователь ролью `User`
-* [ ] Отзыв должен содержать следующие обязательные свойства: `Id`, `Content`, `Rating`, `UserName`
+* [x] Пост может иметь несколько отзывов или не иметь вообще.
+* [x] Отзыв может оставить только зарегистрированный пользователь ролью `User`
+* [x] Отзыв должен содержать следующие обязательные свойства: `Id`, `Content`, `Rating`, `UserName`
 * [ ] Список последних 10 отзывов может быть также запрошен на UI (см. `GetLastReview(int count)`).
 
 ## Требования для роли Администратор

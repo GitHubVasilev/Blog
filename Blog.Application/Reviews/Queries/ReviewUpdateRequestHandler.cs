@@ -41,6 +41,6 @@ public class ReviewUpdateRequestHandler : IRequestHandler<ReviewUpdateRequest, W
         newModel.UpdatedBy = request.User.Identity!.Name!;
 
         await _dbContext.SaveChangesAsync(cancellationToken);
-        return request;
+        return result;
     }
 }
