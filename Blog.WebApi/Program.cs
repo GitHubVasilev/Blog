@@ -56,6 +56,6 @@ public class Program
         app.MapDefaultControllerRoute();
 
         UserIdentity.Instance.Configure(app.Services.GetService<IHttpContextAccessor>()!);
-        app.Run();
+        app.RunAsync();
     }
 }

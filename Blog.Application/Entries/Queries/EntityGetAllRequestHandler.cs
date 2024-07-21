@@ -25,7 +25,7 @@ namespace Blog.Application.Entries.Queries
         {
             var result = WrapperResult.Build<List<EntityGetViewModel>>();
             result.Result = new List<EntityGetViewModel>();
-            var entries = await _dbContext.Entries.ToListAsync(cancellationToken);
+            var entries = await _dbContext.Entities.ToListAsync(cancellationToken);
             entries.ForEach(m => result.Result.Add(_mapper.ToViewModel(m)));
             return result;
         }

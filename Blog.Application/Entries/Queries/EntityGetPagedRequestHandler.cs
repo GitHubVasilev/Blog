@@ -23,7 +23,7 @@ namespace Blog.Application.Entries.Queries
         }
         public async Task<WrapperResult<List<EntityGetViewModel>>> Handle(EntityGetPagedRequest request, CancellationToken cancellationToken)
         {
-            var listEntries = _dbContext.Entries
+            var listEntries = _dbContext.Entities
                .OrderBy(c => c.Id).Skip((request.PageIndex - 1) * request.PageSize)
                .Take(request.PageSize);
             var result = new WrapperResult<List<EntityGetViewModel>>();

@@ -56,9 +56,25 @@ public class ReviewController : BaseController
         return await Mediator.Send(query);
     }
 
+    [HttpPut]
+    [Authorize]
     public async Task<WrapperResult<int>> Update([FromBody] ReviewUpdateViewModel viewModel) 
     {
         var query = new ReviewUpdateRequest(viewModel, User);
+        return await Mediator.Send(query);
+    }
+
+    [HttpGet]
+    public async Task<WrapperResult<List<ReviewGetViewModel>>> GetLastReviews(int count) 
+    {
+        var query = new ReviewGetLastRequest(count, User);
+        return await Mediator.Send(query);
+    }
+
+    [HttpGet]
+    public async Task<WrapperResult<List<ReviewGetViewModel>>> GetPaged(int pageIndex, int pageSize)
+    {
+        var query = new ReviewGetPagedRequest(pageIndex, pageSize, User);
         return await Mediator.Send(query);
     }
 }
