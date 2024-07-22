@@ -3,9 +3,9 @@
 namespace Blog.Application.Entries.ViewModels;
 
 /// <summary>
-/// Модель представления для создания сущности Пост
+/// Модель представления для обновления сущности Пост
 /// </summary>
-public class EntityCreateViewModel : ViewModelBase
+public class EntityUpdateViewModel : ViewModelBase
 {
     /// <summary>
     /// Заголовок

@@ -21,6 +21,7 @@ public static class DependencyInjection
         #region CustomeMappers
         services.AddSingleton<ICustomMapper<Entity, EntityGetViewModel>, EntityGetMapper>();
         services.AddSingleton<ICustomMapper<Entity, EntityCreateViewModel>, EntityCreateMapper>();
+        services.AddSingleton<ICustomMapper<Entity, EntityUpdateViewModel>, EntityUpdateMapper>();
         services.AddSingleton<ICustomMapper<Category, CategoryGetViewModel>, CategoryGetMapper>();
         services.AddSingleton<ICustomMapper<Category, CategoryDetailViewModel>, CategoryDetailMapper>();
         services.AddSingleton<ICustomMapper<Category, CategoryCreateViewModel>, CategoryCreateMapper>();
