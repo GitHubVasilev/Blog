@@ -1,4 +1,5 @@
-﻿using Blog.Application.Interfaces;
+﻿using Blog.Application.Categories.ViewModels;
+using Blog.Application.Interfaces;
 
 namespace Blog.Application.Entries.ViewModels;
 
@@ -19,4 +20,8 @@ public class EntityCreateViewModel : ViewModelBase
     /// Флаг видимости
     /// </summary>
     public bool IsVisible { get; set; }
+    /// <summary>
+    /// Категория
+    /// </summary>
+    public CategoryGetViewModel Category { get; set; } = null!;
 }

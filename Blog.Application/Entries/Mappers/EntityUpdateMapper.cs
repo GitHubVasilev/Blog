@@ -1,4 +1,5 @@
-﻿using Blog.Application.Entries.ViewModels;
+﻿using Blog.Application.Categories.ViewModels;
+using Blog.Application.Entries.ViewModels;
 using Blog.Application.Interfaces;
 using Blog.Domain;
 using System;
@@ -11,6 +12,13 @@ namespace Blog.Application.Entries.Mappers;
 
 public class EntityUpdateMapper : ICustomMapper<Entity, EntityUpdateViewModel>
 {
+    private readonly ICustomMapper<Category, CategoryGetViewModel> _categoryMapper;
+
+    public EntityUpdateMapper(ICustomMapper<Category, CategoryGetViewModel> categoryMapper)
+    {
+        _categoryMapper = categoryMapper;
+    }
+
     /// <summary>
     /// Конвертирует модель представления <see cref="EntityUpdateViewModel"> в модель <see cref="Entity"/> 
     /// </summary>
@@ -22,7 +30,12 @@ public class EntityUpdateMapper : ICustomMapper<Entity, EntityUpdateViewModel>
         {
             Id = viewModel.Id,
             Title = viewModel.Title,
-            Content = viewModel.Content
+            Content = viewModel.Content,
+            CreatedBy = viewModel.CreatedBy,
+            CreatedAt = viewModel.CreatedAt,
+            UpdatedAt = viewModel.UpdatedAt,
+            UpdatedBy = viewModel.UpdatedBy,
+            Category = _categoryMapper.ToModel(viewModel.Category)
         };
     }
 
@@ -37,7 +50,12 @@ public class EntityUpdateMapper : ICustomMapper<Entity, EntityUpdateViewModel>
         {
             Id = model.Id,
             Title = model.Title,
-            Content = model.Content
+            Content = model.Content,
+            CreatedAt = model.CreatedAt,
+            CreatedBy = model.CreatedBy,
+            UpdatedAt = model.UpdatedAt,
+            UpdatedBy = model.UpdatedBy,
+            Category = _categoryMapper.ToViewModel(model.Category)
         };
     }
 }

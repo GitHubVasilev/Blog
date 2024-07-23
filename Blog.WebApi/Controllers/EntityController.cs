@@ -44,4 +44,12 @@ public class EntityController : BaseController
         var query = new EntityGetForUpdateRequest(entityId, User);
         return Mediator.Send(query);
     }
+
+    [HttpPut]
+    [Authorize]
+    public Task<WrapperResult<int>> Update([FromBody] EntityUpdateViewModel viewModel) 
+    {
+        var query = new EntityUpdateRequest(viewModel, User);
+        return Mediator.Send(query);
+    }
 }
