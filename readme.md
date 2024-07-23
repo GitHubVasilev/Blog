@@ -55,10 +55,10 @@
 * [x] `GetPaged(int pageIndex, int pageSize)`
 * [x] `GetAll()` (глупый метод)
 * [x] `Get(CategoryId)`
-* [ ] `Create(EntityCreateViewModel model)` Get
+* [x] `Create(EntityCreateViewModel model)` Get
 * [x] `Create(EntityCreateViewModel model)` Post
 * [x] `GetById(Guid id)`
-* [ ] `Update(EntityUpdateViewModel)`Get
+* [x] `Update(EntityUpdateViewModel)`Get
 * [ ] `Update(EntityUpdateViewModel)`Put
 * [x] `Delete(Guid id)`
 

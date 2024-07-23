@@ -4,9 +4,9 @@ using Blog.Application.Interfaces;
 namespace Blog.Application.Entries.ViewModels;
 
 /// <summary>
-/// Модель представления для создания сущности Пост
+/// Модель представления для обновления сущности Пост
 /// </summary>
-public class EntityCreateViewModel : ViewModelBase
+public class EntityUpdateViewModel : ViewModelAuditableBase
 {
     /// <summary>
     /// Заголовок
@@ -21,7 +21,7 @@ public class EntityCreateViewModel : ViewModelBase
     /// </summary>
     public bool IsVisible { get; set; }
     /// <summary>
-    /// Категория
+    /// Категория 
     /// </summary>
-    public CategoryGetViewModel Category { get; set; } = null!;
+    public CategoryGetViewModel Category { get; set; }
 }
